@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import type { PluginAPI } from "tailwindcss/types/config";
 
 export default {
   darkMode: ["class"],
@@ -16,6 +17,28 @@ export default {
         },
       },
       colors: {
+        dark: {
+          DEFAULT: "hsl(var(--dark-100))",
+          200: "hsl(var(--dark-200))",
+          300: "hsl(var(--dark-300))",
+          400: "hsl(var(--dark-400))",
+          500: "hsl(var(--dark-500))",
+          600: "hsl(var(--dark-600))",
+          700: "hsl(var(--dark-700))",
+          foreground: "hsl(var(--dark-foreground))",
+        },
+
+        primary: {
+          DEFAULT: "hsl(var(--primary-100))",
+          200: "hsl(var(--primary-200))",
+          300: "hsl(var(--primary-300))",
+          400: "hsl(var(--primary-400))",
+          500: "hsl(var(--primary-500))",
+          600: "hsl(var(--primary-600))",
+          650: "hsl(var(--primary-650))",
+          700: "hsl(var(--primary-700))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
@@ -25,10 +48,6 @@ export default {
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
-        },
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -67,5 +86,13 @@ export default {
   animation: {
     "caret-blink": "caret-blink 1.25s ease-out infinite",
   },
-  // plugins: [require("tailwindcss-animate")],
+  plugins: [
+    function ({ matchUtilities }: PluginAPI) {
+      matchUtilities({
+        "grid-cols-fill-flow": (value: string) => ({
+          gridTemplateColumns: `repeat(auto-fill, minmax(${value}))`,
+        }),
+      });
+    },
+  ],
 } satisfies Config;
