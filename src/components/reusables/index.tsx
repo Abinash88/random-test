@@ -5,13 +5,13 @@ import React from "react"
 
 
 
-const ContainerVariants = cva("w-full h-full", {
+const ContainerVariants = cva("w-full ", {
   variants: {
     variant: {
-      default: "max-w-[1700px] mx-auto h-full w-[90%] md:w-[90%]",
-      main_container: "w-full h-full ",
+      default: "max-w-[1700px] mx-auto max-h-screen  overflow-y-auto w-[90%]",
+      main_container: "w-full  ",
       sidebar: "",
-      centered: " flex w-full h-[100dvh] overflow-hidden items-center justify-center",
+      centered: " flex w-full  overflow-hidden items-center justify-center",
       gridCentered: "grid ",
       markdown: " max-w-3xl py-8 md:py-10",
     },

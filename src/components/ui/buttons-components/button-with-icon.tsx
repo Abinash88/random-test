@@ -10,10 +10,11 @@ type TProps = ComponentProps<typeof Button> & {
   reverse?: boolean;
   sort?: boolean | "asc" | "desc";
   img?: StaticImageData | string
+  imgClass?: string
 };
 
 const ButtonWithIcon = forwardRef<HTMLButtonElement, TProps>(
-  ({ icon = "add", sort, reverse, img, ...props }, ref) => {
+  ({ icon = "add", sort, reverse, img, imgClass, ...props }, ref) => {
     const ico = () => {
       switch (icon) {
         case "export":
@@ -47,15 +48,15 @@ const ButtonWithIcon = forwardRef<HTMLButtonElement, TProps>(
       <Button
         {...props}
         ref={ref}
-        className={cn(props.className, reverse && "flex-row-reverse")}
+        className={cn("flex items-center ", props.className, reverse && "flex-row-reverse")}
       >
         {img
           ?
-          <Image src={img} className="w-5 h-5 object-contain" height={100} width={100} alt="icon" />
+          <Image src={img} className={cn(`size-5 object-contain`, imgClass)} height={100} width={100} alt="icon" />
           : null
         }
         {img ? null : ico()}
-        {props.children}
+        <span>{props.children}</span>
       </Button>
     );
   },

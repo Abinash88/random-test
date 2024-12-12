@@ -17,6 +17,8 @@ import {
   FormMessage,
 } from "../form";
 import Input, { type InputProps } from "../input";
+import { Eye, EyeClosed } from "lucide-react";
+import { useState } from "react";
 
 type TProps<T extends FieldValues> = {
   form: UseFormReturn<T, any, undefined>;
@@ -53,6 +55,7 @@ export default function FormInput<T extends FieldValues>({
   labelClass,
   charLimit,
 }: TProps<T>) {
+  const [eyeToggle, setEyeToggle] = useState(false)
   return (
     <FormField
       control={form.control}
@@ -86,7 +89,14 @@ export default function FormInput<T extends FieldValues>({
             {render ? (
               render(field, fieldState, formState)
             ) : (
-              <Input {...input} {...field} />
+              <div className={cn(input?.type === "password" && "flex items-center relative ")}>
+                <Input {...input} type={eyeToggle ? "text" : input?.type} {...field} />
+                {eyeToggle ?
+                  <Eye onClick={() => { setEyeToggle(!eyeToggle) }} className="size-5 absolute right-2 cursor-pointer text-dark-500" />
+                  :
+                  <EyeClosed onClick={() => { setEyeToggle(!eyeToggle) }} className="size-5 absolute right-2 cursor-pointer text-dark-500" />
+                }
+              </div>
             )}
           </FormControl>
           {description && <FormDescription>{description}</FormDescription>}
