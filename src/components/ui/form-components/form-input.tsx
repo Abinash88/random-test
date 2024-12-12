@@ -36,6 +36,7 @@ type TProps<T extends FieldValues> = {
     fieldState: ControllerFieldState,
     formState: UseFormStateReturn<T>,
   ) => React.ReactNode;
+  labelClass?: string
 };
 
 export default function FormInput<T extends FieldValues>({
@@ -49,6 +50,7 @@ export default function FormInput<T extends FieldValues>({
   description,
   render,
   className,
+  labelClass,
   charLimit,
 }: TProps<T>) {
   return (
@@ -61,16 +63,16 @@ export default function FormInput<T extends FieldValues>({
             className,
             horizontal
               ? "flex-row items-center justify-between space-y-0"
-              : "3xl:space-y-3 space-y-2",
+              : "md:space-y-1.5 space-y-0.5",
           )}
         >
           {(label || charLimit) && (
             <div
-              className={cn(charLimit && "flex items-center justify-between")}
+              className={cn(charLimit ? "flex items-center justify-between" : "")}
             >
               {label && (
-                <FormLabel htmlFor={htmlFor} className="w-fit">
-                  {label} {required && <span className="text-primary"> *</span>}
+                <FormLabel htmlFor={htmlFor} className={cn(`w-fit text-dark-500 3xl:text-sm text-xs`, labelClass)}>
+                  {label} {required && <span className="text-danger"> *</span>}
                 </FormLabel>
               )}
               {charLimit && (

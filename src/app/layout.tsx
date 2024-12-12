@@ -21,7 +21,12 @@ export default function RootLayout({
 }>) {
 
   return (
-    <html lang="en">
+    <html style={{
+      colorScheme: "light",
+    }}
+      className="light"
+      suppressHydrationWarning
+      lang="en">
       <body
         className={cn(poppins?.className)}
       >

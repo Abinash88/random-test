@@ -1,5 +1,6 @@
 import LOGO from "./logos/m-commerce-logo.png";
 import WHITE_LOGO from "./logos/m-commerce-white-logo.png";
 import PLACEHOLDER_IMAGE from "./images/placeholder.jpg";
+import GOOGLE from "./images/google.png";
 
-export { LOGO, WHITE_LOGO, PLACEHOLDER_IMAGE };
+export { LOGO, WHITE_LOGO, PLACEHOLDER_IMAGE, GOOGLE };

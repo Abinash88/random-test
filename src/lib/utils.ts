@@ -1,17 +1,15 @@
-import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
-
-
 
 export const formatNumber = (
   e: React.KeyboardEvent<HTMLInputElement>,
   decimal?: number,
   maxVal?: number,
-  ignorePriceLimit?: boolean,
+  ignorePriceLimit?: boolean
 ): false | void => {
   const [int, dec] = e.currentTarget.value.split(".");
   const hasDecimal = e.currentTarget.valueAsNumber;

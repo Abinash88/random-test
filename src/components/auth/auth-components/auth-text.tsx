@@ -10,7 +10,7 @@ const TitleVariants = cva("text-secondary font-medium", {
     variant: {
       default: "md:text-lg text-base py-1 font-medium text-dark-600",
       auth_title: "md:text-xl text-center py-2 font-medium text-lg text-dark-600",
-      auth_p: "md:text-sm text-xs text-dark-200",
+      auth_p: "md:text-sm text-center text-xs text-dark-300",
     },
   },
   defaultVariants: {
@@ -19,16 +19,16 @@ const TitleVariants = cva("text-secondary font-medium", {
 })
 
 
-interface AuthTextProps extends React.HTMLAttributes<HTMLParagraphElement>, VariantProps<typeof TitleVariants> {
+interface TextCompProps extends React.HTMLAttributes<HTMLParagraphElement>, VariantProps<typeof TitleVariants> {
   asChild?: boolean
   className?: string
 }
 
-export const AuthText = React.forwardRef<HTMLParagraphElement, AuthTextProps>(({ asChild, variant, className, ...props }, ref) => {
+export const TextComp = React.forwardRef<HTMLParagraphElement, TextCompProps>(({ asChild, variant, className, ...props }, ref) => {
   const Comp = asChild ? Slot : "p";
   return (
     <Comp className={cn(TitleVariants({ variant }), className)} ref={ref} {...props} />
   )
 })
 
-AuthText.displayName = "AuthText"
+TextComp.displayName = "TextComp"

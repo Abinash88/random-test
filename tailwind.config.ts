@@ -9,7 +9,23 @@ export default {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
+      screens: {
+        xs: "375px",
+        sm: "640px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1280px",
+        "2xl": "1536px",
+        "3xl": "1600px",
+      },
       keyframes: {
         "caret-blink": {
           "0%,70%,100%": { opacity: "1" },
@@ -27,6 +43,9 @@ export default {
           700: "hsl(var(--dark-700))",
           foreground: "hsl(var(--dark-foreground))",
         },
+
+        danger: "hsl(var(--danger))",
+        black: "hsl(var(--dark))",
 
         primary: {
           DEFAULT: "hsl(var(--primary-100))",
@@ -60,6 +79,10 @@ export default {
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
+        },
+        success: {
+          500: "hsl(var(--success-500))",
+          600: "hsl(var(--success-600))",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
